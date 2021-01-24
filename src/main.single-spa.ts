@@ -5,7 +5,6 @@ import { Router, NavigationStart } from '@angular/router';
 
 import { singleSpaAngular, getSingleSpaExtraProviders } from 'single-spa-angular';
 
-
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { singleSpaPropsSubject } from './single-spa/single-spa-props';
@@ -15,7 +14,7 @@ if (environment.production) {
 }
 
 const lifecycles = singleSpaAngular({
-  bootstrapFunction: singleSpaProps => {
+  bootstrapFunction: (singleSpaProps) => {
     singleSpaPropsSubject.next(singleSpaProps);
     return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(AppModule);
   },
@@ -25,6 +24,8 @@ const lifecycles = singleSpaAngular({
   NgZone,
 });
 
-export const bootstrap = lifecycles.bootstrap;
-export const mount = lifecycles.mount;
-export const unmount = lifecycles.unmount;
+export const {
+  bootstrap,
+  mount,
+  unmount,
+} = lifecycles;
