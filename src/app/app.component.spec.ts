@@ -4,8 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  let fixture: ComponentFixture<AppComponent>;
   let app: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -16,9 +16,12 @@ describe('AppComponent', () => {
         AppComponent,
       ],
     }).compileComponents();
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
     app = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
