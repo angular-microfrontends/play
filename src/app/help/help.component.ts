@@ -5,7 +5,7 @@ import { SingleSpaService } from 'src/single-spa/single-spa.service';
 @Component({
   selector: 'play-help',
   templateUrl: './help.component.html',
-  styleUrls: ['./help.component.scss'],
+  styleUrls: ['./help.component.sass'],
 })
 export class HelpComponent {
   constructor(
