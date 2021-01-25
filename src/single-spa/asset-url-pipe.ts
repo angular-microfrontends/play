@@ -1,13 +1,15 @@
 /* eslint-disable class-methods-use-this */
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { AssetUrlService } from './asset-url.service';
+import { SingleSpaService } from './single-spa.service';
 
-// move to util module or project
+/**
+ * Get asset URL from it's project base path, not root-config's base path.
+ */
 @Pipe({ name: 'assetUrl' })
 export class AssetUrlPipe implements PipeTransform {
   constructor(
-    private service: AssetUrlService,
+    private service: SingleSpaService,
   ) { }
 
   transform(value: string): string {

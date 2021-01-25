@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AssetUrlService } from './asset-url.service';
+
+import { SingleSpaService } from 'src/single-spa/single-spa.service';
 
 @Component({
   selector: 'play-help',
@@ -8,8 +9,8 @@ import { AssetUrlService } from './asset-url.service';
 })
 export class HelpComponent {
   constructor(
-    private assetUrlService: AssetUrlService,
+    private spaService: SingleSpaService,
   ) {}
 
-  url = this.assetUrlService.assetUrl('1-code.svg');
+  url = this.spaService.assetUrl('1-code.svg');
 }

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AssetUrlService } from './asset-url.service';
+import { SingleSpaService } from './single-spa.service';
 
-describe('AssetUrlService', () => {
-  let service: AssetUrlService;
+describe('SingleSpaService', () => {
+  let service: SingleSpaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AssetUrlService);
+    service = TestBed.inject(SingleSpaService);
   });
 
   it('should be created', () => {

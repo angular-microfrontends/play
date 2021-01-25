@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssetUrlPipe } from './asset-url-pipe';
-import { AssetUrlService } from './asset-url.service';
+import { AssetUrlPipe } from 'src/single-spa/asset-url-pipe';
+import { SingleSpaService } from 'src/single-spa/single-spa.service';
+
 import { HelpComponent } from './help.component';
 
 describe('HelpComponent', () => {
@@ -15,7 +16,7 @@ describe('HelpComponent', () => {
         HelpComponent,
       ],
       providers: [
-        { provide: AssetUrlService, useValue: { assetUrl: jest.fn() } },
+        { provide: SingleSpaService, useValue: { assetUrl: jest.fn() } },
       ],
     }).compileComponents();
   });
