@@ -186,6 +186,11 @@
   dependencies:
     eslint-scope "^5.1.0"
 
+"@angular-mf/core@../shared-angular/dist/core":
+  version "0.0.1"
+  dependencies:
+    tslib "^2.0.0"
+
 "@angular/animations@~11.1.0":
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-11.1.0.tgz#d71c6b11dc79bafdf927e69f6222f3899aa911d8"
