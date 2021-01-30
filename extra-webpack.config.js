@@ -9,6 +9,10 @@ module.exports = (config, options) => {
     systemjsModuleName: '@angular-mf/play'
   }));
 
+  singleSpaWebpackConfig.externals.push(
+    '@angular-mf/core',
+  );
+
   // Feel free to modify this webpack config however you'd like to
   return singleSpaWebpackConfig;
 };
