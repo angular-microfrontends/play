@@ -10,7 +10,12 @@ module.exports = (config, options) => {
   }));
 
   singleSpaWebpackConfig.externals.push(
+    /@angular\/(?!material).*/,
     '@angular-mf/core',
+    'rxjs',
+    'rxjs/operators',
+    'single-spa',
+    'single-spa-angular'
   );
 
   // Feel free to modify this webpack config however you'd like to
