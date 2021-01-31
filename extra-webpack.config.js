@@ -10,7 +10,7 @@ module.exports = (config, options) => {
   }));
 
   singleSpaWebpackConfig.externals.push(
-    /@angular\/(?!material).*/,
+    /@angular\/.*/,
     '@angular-mf/core',
     'rxjs',
     'rxjs/operators',
