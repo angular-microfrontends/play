@@ -186,8 +186,8 @@
   dependencies:
     eslint-scope "^5.1.0"
 
-"@angular-mf/core@../shared-angular/dist/core":
-  version "0.0.1"
+"@angular-mf/core@../shared-angular/dist/angular-mf-core":
+  version "0.1.0-0"
   dependencies:
     tslib "^2.0.0"
 
