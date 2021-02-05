@@ -1,6 +1,9 @@
 {
   "root": true,
   "ignorePatterns": [
+    "coverage/",
+    "dist/",
+    "node_modules/",
     "projects/**/*"
   ],
   "overrides": [
@@ -10,7 +13,8 @@
       ],
       "parserOptions": {
         "project": [
-          "tsconfig.json",
+          "tsconfig.app.json",
+          "tsconfig.spec.json",
           "e2e/tsconfig.json"
         ],
         "createDefaultProgram": true
