@@ -8,6 +8,13 @@
 
 </div>
 
+<ng-container *ngIf="challengeEnded">
+
+  <div class="win" *ngIf="win">You Win!</div>
+
+  <div class="lose" *ngIf="!win">You Lose!</div>
+
+</ng-container>
 
 <div class="actions">
 

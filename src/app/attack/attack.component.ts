@@ -23,6 +23,14 @@ export class AttackComponent {
     return (typeof this.core.challenger !== 'object') || this.core.challengeEnded;
   }
 
+  get challengeEnded(): boolean {
+    return (typeof this.core.challenger === 'object') && this.core.challengeEnded;
+  }
+
+  get win(): boolean {
+    return this.core.player.health > 0;
+  }
+
   constructor(
     public core: CoreService,
   ) { }

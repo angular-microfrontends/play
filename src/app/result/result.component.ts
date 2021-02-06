@@ -22,28 +22,30 @@ export class ResultComponent {
       throw new Error('No attack input');
     }
 
-    let desc = '';
+    const modifs: string[] = [];
 
     if (!this.attack.damageMargin) {
       // no name
     } else if (this.attack.damageMargin > 10) {
-      desc += 'HARD';
+      modifs.push('HARD');
     } else if (this.attack.damageMargin > 5) {
-      desc += 'Strong';
+      modifs.push('Strong');
     } else {
-      desc += 'Serious';
+      modifs.push('Serious');
     }
 
     if (this.attack.attackMargin > 10) {
-      desc += 'CRITICAL';
+      modifs.push('CRITICAL');
     } else if (this.attack.attackMargin > 5) {
-      desc += 'Skillful';
+      modifs.push('Skillful');
     }
 
-    if (desc === '') {
+    let desc;
+    if (modifs.length === 0) {
       desc = 'Regular';
+    } else {
+      desc = modifs.join(' ');
     }
-
     return `${desc} Attack`;
   }
 
