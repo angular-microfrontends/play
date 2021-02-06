@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CoreService, Fighter } from '@angular-mf/core';
+import { CoreService } from '@angular-mf/core';
 
 @Component({
   selector: 'play-attack',
@@ -18,4 +18,16 @@ export class AttackComponent {
   constructor(
     public core: CoreService,
   ) { }
+
+  attack(): void {
+    this.core.attack();
+  }
+
+  challenge(): void {
+    this.core.buildChallenger();
+  }
+
+  runAway(): void {
+    this.core.runAway();
+  }
 }

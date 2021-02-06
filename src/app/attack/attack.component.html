@@ -5,9 +5,28 @@
 </div>
 
 <div class="actions">
-  <button mat-raised-button color="primary" [disabled]="resting">Run away</button>
-  <button mat-raised-button color="primary" [disabled]="resting">Attack!!</button>
-  <button mat-raised-button color="primary" [disabled]="fighting">Challenge</button>
+
+  <button
+    color="primary"
+    [disabled]="resting"
+    mat-raised-button
+    (click)="runAway()"
+  >Run away</button>
+
+  <button
+    color="primary"
+    [disabled]="resting"
+    mat-raised-button
+    (click)="attack()"
+  >Attack!!</button>
+
+  <button
+    color="primary"
+    [disabled]="fighting"
+    mat-raised-button
+    (click)="challenge()"
+  >Challenge</button>
+
 </div>
 
 <div class="help">
