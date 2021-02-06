@@ -43,6 +43,10 @@ export class AttackComponent {
     this.core.dodge();
   }
 
+  nextTurn(): void {
+    this.core.startTurn();
+  }
+
   run(): void {
     this.core.run();
   }

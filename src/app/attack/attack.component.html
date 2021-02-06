@@ -1,7 +1,11 @@
-<div>
+<div class="battle-area">
+
   <core-stats [fighter]="core.player" name="Player"></core-stats>
 
+  <play-result [attack]="core.attackData" *ngIf="core.attackData"></play-result>
+
   <core-stats [fighter]="core.challenger" name="Challenger" *ngIf="core.challenger"></core-stats>
+
 </div>
 
 <div class="actions">
@@ -38,8 +42,8 @@
     *ngIf="waiting"
     color="primary"
     mat-raised-button
-    (click)="challenge()"
-  >Next</button>
+    (click)="nextTurn()"
+  >Next Turn</button>
 
   <button
     *ngIf="resting"

@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AttackComponent } from './attack/attack.component';
 import { EmptyRouteComponent } from './empty-route/empty-route.component';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AttackComponent,
     EmptyRouteComponent,
+    ResultComponent,
   ],
   imports: [
     AppRoutingModule,

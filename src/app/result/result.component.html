@@ -1,0 +1,11 @@
+<div class="direction">{{ attackDirection }}</div>
+
+<div class="miss" *ngIf="miss">Miss!</div>
+
+<ng-container *ngIf="attackSuccessful">
+
+  <div class="attack">{{ attackDescription }}!</div>
+
+  <div class="defense" *ngIf="defended">{{ defenseDescription }}</div>
+
+</ng-container>
