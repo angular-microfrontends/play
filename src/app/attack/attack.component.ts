@@ -16,11 +16,11 @@ export class AttackComponent {
   }
 
   get waiting(): boolean {
-    return !this.resting && !this.attacking && !this.defending;
+    return !this.resting && !this.attacking && !this.defending && !this.core.challengeEnded;
   }
 
   get resting(): boolean {
-    return typeof this.core.challenger !== 'object';
+    return (typeof this.core.challenger !== 'object') || this.core.challengeEnded;
   }
 
   constructor(
