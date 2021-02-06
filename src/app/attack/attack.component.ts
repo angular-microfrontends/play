@@ -7,12 +7,20 @@ import { CoreService } from '@angular-mf/core';
   styleUrls: ['./attack.component.sass'],
 })
 export class AttackComponent {
-  get fighting(): boolean {
-    return typeof this.core.challenger === 'object';
+  get attacking(): boolean {
+    return this.core.attacking;
+  }
+
+  get defending(): boolean {
+    return this.core.defending;
+  }
+
+  get waiting(): boolean {
+    return !this.resting && !this.attacking && !this.defending;
   }
 
   get resting(): boolean {
-    return !this.fighting;
+    return typeof this.core.challenger !== 'object';
   }
 
   constructor(
@@ -23,11 +31,19 @@ export class AttackComponent {
     this.core.attack();
   }
 
-  challenge(): void {
-    this.core.buildChallenger();
+  block(): void {
+    this.core.block();
   }
 
-  runAway(): void {
-    this.core.runAway();
+  challenge(): void {
+    this.core.startChallenge();
+  }
+
+  dodge(): void {
+    this.core.dodge();
+  }
+
+  run(): void {
+    this.core.run();
   }
 }

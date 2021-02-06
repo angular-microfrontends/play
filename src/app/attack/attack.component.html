@@ -7,22 +7,43 @@
 <div class="actions">
 
   <button
+    *ngIf="attacking"
     color="primary"
-    [disabled]="resting"
     mat-raised-button
-    (click)="runAway()"
+    (click)="run()"
   >Run away</button>
 
   <button
+    *ngIf="defending"
     color="primary"
-    [disabled]="resting"
+    mat-raised-button
+    (click)="block()"
+  >Block</button>
+
+  <button
+    *ngIf="defending"
+    color="primary"
+    mat-raised-button
+    (click)="dodge()"
+  >Dodge</button>
+
+  <button
+    *ngIf="attacking"
+    color="primary"
     mat-raised-button
     (click)="attack()"
   >Attack!!</button>
 
   <button
+    *ngIf="waiting"
     color="primary"
-    [disabled]="fighting"
+    mat-raised-button
+    (click)="challenge()"
+  >Next</button>
+
+  <button
+    *ngIf="resting"
+    color="primary"
     mat-raised-button
     (click)="challenge()"
   >Challenge</button>
