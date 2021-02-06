@@ -1,9 +1,15 @@
-<div>attack works!</div>
-
-<div>{{ message }}</div>
-
-<core-core></core-core>
-
 <div>
+  <core-stats [fighter]="core.player" name="Player"></core-stats>
+
+  <core-stats [fighter]="core.challenger" name="Challenger" *ngIf="core.challenger"></core-stats>
+</div>
+
+<div class="actions">
+  <button mat-raised-button color="primary" [disabled]="resting">Run away</button>
+  <button mat-raised-button color="primary" [disabled]="resting">Attack!!</button>
+  <button mat-raised-button color="primary" [disabled]="fighting">Challenge</button>
+</div>
+
+<div class="help">
   <a routerLink="../help">Help!</a>
 </div>

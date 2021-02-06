@@ -1,6 +1,5 @@
-import { core } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { CoreService } from '@angular-mf/core';
+import { CoreService, Fighter } from '@angular-mf/core';
 
 @Component({
   selector: 'play-attack',
@@ -8,9 +7,15 @@ import { CoreService } from '@angular-mf/core';
   styleUrls: ['./attack.component.sass'],
 })
 export class AttackComponent {
-  public message = this.core.readMessage();
+  get fighting(): boolean {
+    return typeof this.core.challenger === 'object';
+  }
+
+  get resting(): boolean {
+    return !this.fighting;
+  }
 
   constructor(
-    private core: CoreService,
+    public core: CoreService,
   ) { }
 }
