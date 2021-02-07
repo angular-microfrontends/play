@@ -1,6 +1,6 @@
 <div class="battle-area">
 
-  <core-stats [fighter]="core.player" name="Player"></core-stats>
+  <core-stats [fighter]="core.player" [showExperience]="true" name="Player"></core-stats>
 
   <play-result [attack]="core.attackData" *ngIf="core.attackData"></play-result>
 

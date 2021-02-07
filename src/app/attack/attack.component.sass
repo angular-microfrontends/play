@@ -11,3 +11,20 @@
 .help
   display: flex
   justify-content: flex-end
+
+%result
+  font
+    size: 4em
+    weight: bold
+  text
+    align: center
+    shadow: 3px 3px grey
+  -webkit-text-stroke: 1px black
+
+.win
+  @extend %result
+  color: gold
+
+.lose
+  @extend %result
+  color: red
