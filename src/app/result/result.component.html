@@ -1,11 +1,40 @@
-<div class="direction">{{ attackDirection }}</div>
+<div class="root" [class.challenger]="!playerAttack" [class.player]="playerAttack">
 
-<div class="miss" *ngIf="miss">Miss!</div>
+  <div class="direction">{{ attackDirection }}</div>
 
-<ng-container *ngIf="attackSuccessful">
+  <div class="miss" *ngIf="miss">Miss!</div>
 
-  <div class="attack">{{ attackDescription }}!</div>
+  <ng-container *ngIf="attackSuccessful">
 
-  <div class="defense" *ngIf="defended">{{ defenseDescription }}</div>
+    <div class="attack">
+      <span [class]="attackLevel">
+        <span [class]="damageLevel">
 
-</ng-container>
+          <ng-container [ngSwitch]="attackLevel">
+            <ng-container *ngSwitchCase="'critical'">Critical </ng-container>
+            <ng-container *ngSwitchCase="'skillful'">Skillful </ng-container>
+          </ng-container>
+
+          <ng-container [ngSwitch]="damageLevel">
+            <ng-container *ngSwitchCase="'hard'">Hard </ng-container>
+            <ng-container *ngSwitchCase="'serious'">Serious </ng-container>
+            <ng-container *ngSwitchCase="'strong'">Strong </ng-container>
+          </ng-container>
+
+          <ng-container *ngIf="regularAttack">Regular</ng-container>
+
+          Attack
+        </span>
+      </span>
+    </div>
+
+    <div
+      *ngIf="defended"
+      [class.defense]="true"
+      [class.fail]="!defenseSuccessful"
+      [class.success]="defenseSuccessful"
+    >{{ defenseDescription }}</div>
+
+  </ng-container>
+
+</div>

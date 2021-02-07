@@ -1,11 +1,65 @@
-:host
+.attack
+  text-align: center
+  .challenger &
+    color: red
+  .player &
+    color: green
+
+  .critical
+    font-size: 1.3em
+    font-weight: bold
+    text-transform: uppercase
+  .skillful
+    font-size: 1.15em
+    font-weight: bold
+
+  .hard
+    font-size: 1.3em
+    font-weight: bold
+    text-transform: uppercase
+  .serious
+    font-size: 1.2em
+    font-weight: bold
+  .strong
+    font-size: 1.1em
+    font-weight: bold
+
+.defense
+  margin-top: 1em
+
+  .challenger &
+    &.fail
+      color: red
+    &.success
+      color: green
+  .player &
+    &.fail
+      color: green
+    &.success
+      color: red
+
+.direction
+  font:
+    size: 3em
+    weight: bold
+  padding: 0
+  .challenger &
+    color: red
+  .player &
+    color: green
+
+.miss
+  font-weight: bold
+  .challenger &
+    color: green
+  .player &
+    color: red
+
+.root
   align-items: center
-  border: 1px solid red
   display: flex
   flex-direction: column
-  justify-content: center
+  justify-content: flex-start
+  min-height: 15em
   padding: 0.5em
   width: 20em
-
-div
-  padding: 0.5em 0
