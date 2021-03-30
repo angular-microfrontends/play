@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CoreService } from '@angular-mf/core';
 
 @Component({
@@ -6,7 +6,7 @@ import { CoreService } from '@angular-mf/core';
   templateUrl: './attack.component.html',
   styleUrls: ['./attack.component.sass'],
 })
-export class AttackComponent {
+export class AttackComponent implements OnInit, OnDestroy {
   get attacking(): boolean {
     return this.core.attacking;
   }
@@ -34,6 +34,14 @@ export class AttackComponent {
   constructor(
     public core: CoreService,
   ) { }
+
+  ngOnInit(): void {
+    this.core.load();
+  }
+
+  ngOnDestroy(): void {
+    this.core.save();
+  }
 
   attack(): void {
     this.core.attack();
