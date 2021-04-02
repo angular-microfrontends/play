@@ -10,7 +10,6 @@ module.exports = (config, options) => {
   }));
 
   singleSpaWebpackConfig.externals.push(
-    // /@angular\/.*/,
     '@angular/common',
     '@angular/core',
     '@angular/platform-browser',
@@ -19,8 +18,6 @@ module.exports = (config, options) => {
     'rxjs',
     'rxjs/operators',
     'single-spa',
-    'single-spa-angular',
-    // 'tslib',
   );
 
   // Feel free to modify this webpack config however you'd like to
