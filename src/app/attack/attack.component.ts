@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CoreService } from '@angular-mf/core';
+import { GameCoreService } from '@angular-microfrontends/game-core';
 
 @Component({
   selector: 'play-attack',
@@ -32,7 +32,7 @@ export class AttackComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    public core: CoreService,
+    public core: GameCoreService,
   ) { }
 
   ngOnInit(): void {

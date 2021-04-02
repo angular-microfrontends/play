@@ -1,5 +1,5 @@
 {
-  "name": "@angular-mf/play",
+  "name": "@angular-microfrontends/play",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-mf/core": "../shared-angular/dist/angular-mf-core",
+    "@angular-microfrontends/game-core": "^0.1.4",
     "@angular/animations": "~11.1.0",
     "@angular/cdk": "~11.1.0-rc.0-sha-9b1ef8569",
     "@angular/common": "~11.1.0",

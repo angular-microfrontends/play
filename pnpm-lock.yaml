@@ -1,5 +1,5 @@
 dependencies:
-  '@angular-mf/core': link:../shared-angular/dist/angular-mf-core
+  '@angular-microfrontends/game-core': 0.1.4_1b0d6017f20874ddd28c0dfee29e4cb8
   '@angular/animations': 11.1.2_@angular+core@11.1.2
   '@angular/cdk': 11.1.2_d1935859c607dd70773339e960c525be
   '@angular/common': 11.1.2_@angular+core@11.1.2+rxjs@6.6.3
@@ -324,6 +324,19 @@ packages:
       typescript: '*'
     resolution:
       integrity: sha512-WiIhuA3oQj7/ofuy4GyZunMSxbc4OTUKZqVGjBRhXKoEFsIpw2DBf4TCUoHawshIvr7j/CW74I15j6A6sZ7gwA==
+  /@angular-microfrontends/game-core/0.1.4_1b0d6017f20874ddd28c0dfee29e4cb8:
+    dependencies:
+      '@angular/common': 11.1.2_@angular+core@11.1.2+rxjs@6.6.3
+      '@angular/core': 11.1.2_rxjs@6.6.3+zone.js@0.11.3
+      '@angular/platform-browser': 11.1.2_d623d1b3b25e10502fd3daa497258daa
+      tslib: 2.1.0
+    dev: false
+    peerDependencies:
+      '@angular/common': ^11.1.1
+      '@angular/core': ^11.1.1
+      '@angular/platform-browser': ~11.1.0
+    resolution:
+      integrity: sha512-aGTPXxnnfA1kaYROXvYLnzBiPlpx6LmvY8zm4LED/KCy6q57Clbeg7G43mDGGxhqvL4W9c4Wnm37+Yl8WglwGg==
   /@angular/animations/11.1.2_@angular+core@11.1.2:
     dependencies:
       '@angular/core': 11.1.2_rxjs@6.6.3+zone.js@0.11.3
@@ -12086,7 +12099,7 @@ specifiers:
   '@angular-eslint/eslint-plugin-template': 1.1.0
   '@angular-eslint/schematics': 1.1.0
   '@angular-eslint/template-parser': 1.1.0
-  '@angular-mf/core': ../shared-angular/dist/angular-mf-core
+  '@angular-microfrontends/game-core': ^0.1.4
   '@angular/animations': ~11.1.0
   '@angular/cdk': ~11.1.0-rc.0-sha-9b1ef8569
   '@angular/cli': ~11.1.1

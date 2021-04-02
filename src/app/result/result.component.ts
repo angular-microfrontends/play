@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Attack } from '@angular-mf/core';
+import { Attack } from '@angular-microfrontends/game-core';
 
 type AttackLevel = 'regular' | 'skillful' | 'critical';
 
