@@ -28,7 +28,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should have "navbar" as title', () => {
+  it('should have "play" as title', () => {
     expect(app.title).toEqual('play');
   });
 
