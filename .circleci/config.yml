@@ -1,0 +1,119 @@
+version: 2.1
+jobs:
+  setup:
+    docker:
+      - image: znck/pnpm:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install
+          command: pnpm install --frozen-lockfile
+      - save_cache:
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - node_modules
+  build:
+    docker:
+      - image: znck/pnpm:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Build
+          command: >-
+            pnpm run build
+            --
+            --prod
+            --deploy-url https://'"$CF_PUBLIC_URL"'/'"$CIRCLE_PROJECT_REPONAME"'/'"$CIRCLE_SHA1"'/
+      - run:
+          name: List
+          command: ls dist
+      - save_cache:
+          key: build-output-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - dist
+      - store_artifacts:
+          path: dist
+          destination: dist/
+  quality:
+    docker:
+      - image: znck/pnpm:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Test
+          command: pnpm test
+      - run:
+          name: Lint
+          command: pnpm run lint
+  deploy:
+    docker:
+      - image: google/cloud-sdk
+    environment:
+      PROJECT_DIR: /home/circleci/project
+    steps:
+      - restore_cache:
+          key: build-output-{{ .Environment.CIRCLE_SHA1 }}
+      - run:
+          name: Credential file
+          command: echo $GOOGLE_APPLICATION_CREDENTIALS_JSON > google-application-credentials.json
+      - run:
+          name: Google authentication
+          command: >-
+            gcloud auth activate-service-account
+            --key-file google-application-credentials.json
+      - run:
+          name: Strip index
+          command: rm -f $PROJECT_DIR/dist/$CIRCLE_PROJECT_REPONAME/index.html
+      - run:
+          name: Module upload
+          command: >
+            echo "The Cloud Storage directory will be $CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1"
+
+            gsutil cp -rZ
+            $PROJECT_DIR/dist/$CIRCLE_PROJECT_REPONAME
+            gs://$BUCKET_NAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1
+      - run:
+          name: Import map update
+          command: >
+            export IMPORT_MAP_DATA='{
+            "service": "@angular-microfrontends/'"$CIRCLE_PROJECT_REPONAME"'",
+            "url": "https://'"$CF_PUBLIC_URL"'/'"$CIRCLE_PROJECT_REPONAME"'/'"$CIRCLE_SHA1"'/main.js"
+            }'
+
+            echo "Import map data: $IMPORT_MAP_DATA"
+
+            curl
+            --data "$IMPORT_MAP_DATA"
+            --fail
+            --header "Accept:application/json"
+            --header "Content-Type:application/json"
+            --include
+            --insecure
+            --request PATCH
+            --user $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD
+            http://$DEPLOYER_HOST/services\?env=$DEPLOYER_ENV
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - setup
+      - build:
+          requires:
+            - setup
+      - quality:
+          requires:
+            - setup
+      - deploy:
+          context: deploy-context
+          requires:
+            - build
+            - quality
+          filters:
+            branches:
+              only: master
